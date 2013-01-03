@@ -1,5 +1,7 @@
 SampleApp::Application.routes.draw do
 
+	resources :users
+
     #also generates the var root_path
     root to: "static_pages#home"
     
