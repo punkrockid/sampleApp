@@ -1,12 +1,14 @@
 SampleApp::Application.routes.draw do
-
 	resources :users
+	resources :sessions, only: [:new, :create, :destroy]
 
     #also generates the var root_path
     root to: "static_pages#home"
     
 	#this also generates the var {page}_path (i.e: help_path)
 	match "/signup",	to: "users#new"
+	match "/signin",	to: "sessions#new"
+	match "/signout",	to: "sessions#destroy", via: :delete
 
 	match "/help",		to: "static_pages#help"
 	match "/about",		to: "static_pages#about"
