@@ -13,7 +13,7 @@ module SessionsHelper
 	end
 
 	def signed_in?
-		return !current_user.nil?
+		!current_user.nil?
 	end
 
 	def sign_out
