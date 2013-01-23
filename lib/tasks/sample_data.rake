@@ -13,5 +13,10 @@ namespace :db do
 			User.create!(name: name, email: email,
 				password: password, password_confirmation: password)
 		end
+
+		usrs=User.all(limit:6)
+		50.times do
+			usrs.each{ |usr| usr.microposts.create!(content: Faker::Lorem.sentence(5)) }
+		end
 	end
 end

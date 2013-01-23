@@ -89,6 +89,18 @@ describe "Authentication" do
 			end
 		end
 
+		describe "in the Microposts controller" do
+			describe "invoking the create action" do
+				before { post microposts_path }
+				specify { response.should redirect_to(signin_path) }
+			end
+
+			describe "invoking the destroy action" do
+				before { delete micropost_path(FactoryGirl.create(:micropost)) }
+				specify { response.should redirect_to(signin_path) }
+			end
+		end
+
 		describe "as a different user" do
 			let(:user) { FactoryGirl.create(:user) }
 			let(:other_user) { FactoryGirl.create(:user, email: "other@user.com") }
